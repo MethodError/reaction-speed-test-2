@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Speed Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-bolt"></i> Reaction Speed Test</h1>
+            <p class="subtitle">Test how fast you can react when the countdown reaches zero!</p>
+        </header>
+
+        <main>
+            <div class="game-area">
+                <div class="countdown-display" id="countdown">
+                    <span class="number" id="countdown-number">5</span>
+                </div>
+
+                <div class="instructions" id="instructions">
+                    <p><i class="fas fa-info-circle"></i> Get ready! The countdown will start from 5 to 0.</p>
+                    <p><i class="fas fa-mouse-pointer"></i> Click the button as soon as it reaches 0!</p>
+                </div>
+
+                <div class="controls">
+                    <button id="start-btn" class="btn start-btn">
+                        <i class="fas fa-play"></i> Start Test
+                    </button>
+                    
+                    <button id="click-btn" class="btn click-btn" disabled>
+                        <i class="fas fa-hand-pointer"></i> CLICK NOW!
+                    </button>
+                </div>
+
+                <div class="results" id="results">
+                    <h2><i class="fas fa-tachometer-alt"></i> Your Results</h2>
+                    <div class="result-item">
+                        <span class="label">Reaction Time:</span>
+                        <span class="value" id="reaction-time">--</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Best Time:</span>
+                        <span class="value" id="best-time">--</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Attempts:</span>
+                        <span class="value" id="attempts">0</span>
+                    </div>
+                </div>
+
+                <div class="feedback" id="feedback">
+                    <p id="feedback-text">Press "Start Test" to begin!</p>
+                </div>
+            </div>
+
+            <div class="how-to-play">
+                <h3><i class="fas fa-gamepad"></i> How to Play</h3>
+                <ol>
+                    <li>Click "Start Test" to begin the countdown</li>
+                    <li>Watch the number count down from 5 to 0</li>
+                    <li>As soon as it reaches 0, click the "CLICK NOW!" button</li>
+                    <li>Your reaction time will be measured in milliseconds</li>
+                    <li>Try to beat your best time!</li>
+                </ol>
+            </div>
+        </main>
+
+        <footer>
+            <p>Reaction Speed Test &copy; 2026 | Built with JavaScript</p>
+            <p class="github-link">
+                <i class="fab fa-github"></i> 
+                <a href="https://github.com/withoutprotocol/reaction-speed-test" target="_blank">View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

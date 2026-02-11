@@ -1,0 +1,16 @@
+# Minimal Jekyll config for GitHub Pages
+title: Reaction Speed Test
+description: A simple reaction speed test web app
+theme: jekyll-theme-minimal
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - README.md
+  - .gitignore
+  - node_modules/
+  - vendor/

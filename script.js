@@ -2,8 +2,6 @@
 const countdownElement = document.getElementById('countdown');
 const countdownNumber = document.getElementById('countdown-number');
 const startButton = document.getElementById('start-btn');
-const instructions = document.getElementById('instructions');
-const feedback = document.getElementById('feedback');
 const feedbackText = document.getElementById('feedback-text');
 const reactionTimeElement = document.getElementById('reaction-time');
 const bestTimeElement = document.getElementById('best-time');
@@ -31,10 +29,22 @@ updateUI();
 startButton.addEventListener('click', startGame);
 countdownElement.addEventListener('click', handleCountdownClick);
 
+// Keyboard support
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space' || event.code === 'Enter') {
+        if (!gameStarted && !startButton.disabled) {
+            startGame();
+        } else if (waitingForClick) {
+            handleCountdownClick();
+        }
+    }
+});
+
 function startGame() {
+    console.log('startGame called, gameStarted:', gameStarted);
+    
     if (gameStarted) return;
     
-    resetGame();
     gameStarted = true;
     waitingForClick = false;
     
@@ -92,7 +102,7 @@ function handleCountdownClick() {
     // Update results
     attempts++;
     attemptsElement.textContent = attempts;
-    reactionTimeElement.textContent = `${reactionTime}ms`;
+    reactionTimeElement.textContent = reactionTime;
     
     // Add to history
     reactionTimes.push(reactionTime);
@@ -104,34 +114,34 @@ function handleCountdownClick() {
     // Update best time
     if (bestTime === null || reactionTime < bestTime) {
         bestTime = reactionTime;
-        bestTimeElement.textContent = `${bestTime}ms`;
+        bestTimeElement.textContent = bestTime;
     }
     
     // Calculate average
     const averageTime = Math.round(totalReactionTime / reactionTimes.length);
-    averageTimeElement.textContent = `${averageTime}ms`;
+    averageTimeElement.textContent = averageTime;
     
     // Provide feedback based on reaction time
     let feedbackMessage;
     let feedbackColor;
     
     if (reactionTime < 180) {
-        feedbackMessage = '⚡ Superhuman speed! Are you a robot?';
+        feedbackMessage = '⚡ Superhuman speed!';
         feedbackColor = '#00FFFF';
     } else if (reactionTime < 250) {
-        feedbackMessage = '🚀 Excellent! Lightning fast reflexes!';
+        feedbackMessage = '🚀 Excellent!';
         feedbackColor = '#4CAF50';
     } else if (reactionTime < 350) {
-        feedbackMessage = '👍 Great job! Faster than average!';
+        feedbackMessage = '👍 Great job!';
         feedbackColor = '#8BC34A';
     } else if (reactionTime < 450) {
-        feedbackMessage = '👌 Good reaction time!';
+        feedbackMessage = '👌 Good!';
         feedbackColor = '#FFC107';
     } else if (reactionTime < 600) {
-        feedbackMessage = '💤 A bit slow... Try to focus more!';
+        feedbackMessage = '💤 A bit slow...';
         feedbackColor = '#FF9800';
     } else {
-        feedbackMessage = '🐌 Too slow! Were you distracted?';
+        feedbackMessage = '🐌 Too slow!';
         feedbackColor = '#FF5722';
     }
     
@@ -218,62 +228,16 @@ function updateUI() {
     countdownElement.style.cursor = 'pointer';
     
     // Set initial text content
-    reactionTimeElement.textContent = '-- ms';
-    bestTimeElement.textContent = '-- ms';
-    averageTimeElement.textContent = '-- ms';
+    reactionTimeElement.textContent = '--';
+    bestTimeElement.textContent = '--';
+    averageTimeElement.textContent = '--';
     attemptsElement.textContent = '0';
     gameStatusElement.textContent = 'Ready';
     gameStatusElement.style.color = '#4CAF50';
-    feedbackText.textContent = 'Press "Start Test" to begin the reaction speed test!';
+    feedbackText.textContent = 'Press "Start Test" to begin!';
 }
 
-// Add some fun effects
-startButton.addEventListener('mouseenter', () => {
-    if (!startButton.disabled) {
-        startButton.style.transform = 'scale(1.05)';
-    }
-});
-
-startButton.addEventListener('mouseleave', () => {
-    startButton.style.transform = 'scale(1)';
-});
-
-countdownElement.addEventListener('mouseenter', () => {
-    if (!gameStarted || waitingForClick) {
-        countdownElement.style.transform = 'scale(1.02)';
-    }
-});
-
-countdownElement.addEventListener('mouseleave', () => {
-    countdownElement.style.transform = 'scale(1)';
-});
-
-// Add keyboard support
-document.addEventListener('keydown', (event) => {
-    if (event.code === 'Space' || event.code === 'Enter') {
-        if (!gameStarted && !startButton.disabled) {
-            startGame();
-        } else if (waitingForClick) {
-            handleCountdownClick();
-        }
-    }
-});
-
-// Instructions for keyboard
-const keyboardHint = document.createElement('p');
-keyboardHint.className = 'keyboard-hint';
-keyboardHint.innerHTML = '<i class="fas fa-keyboard"></i> You can also use <kbd>Space</kbd> or <kbd>Enter</kbd> to start and click!';
-
-const instructionsDiv = document.querySelector('.instructions');
-if (instructionsDiv) {
-    instructionsDiv.appendChild(keyboardHint);
-}
-
-console.log('Reaction Speed Test v2.0 loaded successfully!');
-console.log('New features:');
-console.log('- Clickable number display (no separate button)');
-console.log('- Single page layout (no scrolling)');
-console.log('- Improved visual feedback');
-console.log('- Attempt history tracking');
-console.log('- Average time calculation');
-console.log('- Enhanced UI with cards and grids');
+// Debug logging
+console.log('Reaction Speed Test loaded');
+console.log('Start button:', startButton);
+console.log('Countdown element:', countdownElement);

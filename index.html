@@ -16,85 +16,65 @@
 
         <main>
             <div class="game-area">
-                <!-- Countdown Display (Clickable) -->
-                <div class="countdown-display" id="countdown">
-                    <span class="number" id="countdown-number">5</span>
-                    <div class="click-hint">Click me when it reaches 0!</div>
-                </div>
-
-                <!-- Instructions & Controls -->
-                <div class="instructions-controls">
-                    <div class="instructions">
-                        <h3><i class="fas fa-info-circle"></i> How to Play</h3>
-                        <ol>
-                            <li>Click <strong>"Start Test"</strong> to begin</li>
-                            <li>Watch the number count down from <strong>5 to 0</strong></li>
-                            <li>As soon as it reaches <strong>0</strong>, click the <strong>number</strong></li>
-                            <li>Your reaction time will be measured</li>
-                            <li>Try to beat your best time!</li>
-                        </ol>
-                        <p class="keyboard-hint"><i class="fas fa-keyboard"></i> You can also use <kbd>Space</kbd> or <kbd>Enter</kbd> to start</p>
+                <!-- Main Game Section -->
+                <div class="main-game">
+                    <!-- Countdown Display (Clickable) -->
+                    <div class="countdown-display" id="countdown">
+                        <span class="number" id="countdown-number">5</span>
+                        <div class="click-hint">Click when it reaches 0!</div>
                     </div>
 
-                    <div class="controls">
+                    <!-- Simple Controls -->
+                    <div class="simple-controls">
                         <button id="start-btn" class="btn start-btn">
                             <i class="fas fa-play"></i> Start Test
                         </button>
                         
-                        <div class="game-stats">
-                            <div class="stat">
-                                <span class="stat-label">Attempts:</span>
-                                <span class="stat-value" id="attempts">0</span>
+                        <div class="simple-stats">
+                            <div class="simple-stat">
+                                <span>Attempts: <strong id="attempts">0</strong></span>
                             </div>
-                            <div class="stat">
-                                <span class="stat-label">Status:</span>
-                                <span class="stat-value" id="game-status">Ready</span>
+                            <div class="simple-stat">
+                                <span>Status: <strong id="game-status">Ready</strong></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Results Display -->
-                <div class="results" id="results">
-                    <h2><i class="fas fa-tachometer-alt"></i> Your Results</h2>
-                    <div class="results-grid">
-                        <div class="result-card">
-                            <div class="result-icon">⚡</div>
-                            <div class="result-content">
-                                <div class="result-label">Current Reaction</div>
-                                <div class="result-value" id="reaction-time">-- ms</div>
-                            </div>
+                <!-- Results & Feedback -->
+                <div class="results-feedback">
+                    <!-- Results -->
+                    <div class="simple-results">
+                        <div class="result-box">
+                            <div class="result-title">Current</div>
+                            <div class="result-value" id="reaction-time">--</div>
+                            <div class="result-unit">ms</div>
                         </div>
                         
-                        <div class="result-card best">
-                            <div class="result-icon">🏆</div>
-                            <div class="result-content">
-                                <div class="result-label">Best Time</div>
-                                <div class="result-value" id="best-time">-- ms</div>
-                            </div>
+                        <div class="result-box best">
+                            <div class="result-title">Best</div>
+                            <div class="result-value" id="best-time">--</div>
+                            <div class="result-unit">ms</div>
                         </div>
                         
-                        <div class="result-card">
-                            <div class="result-icon">📊</div>
-                            <div class="result-content">
-                                <div class="result-label">Average</div>
-                                <div class="result-value" id="average-time">-- ms</div>
-                            </div>
+                        <div class="result-box">
+                            <div class="result-title">Average</div>
+                            <div class="result-value" id="average-time">--</div>
+                            <div class="result-unit">ms</div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Feedback & History -->
-                <div class="feedback-history">
-                    <div class="feedback" id="feedback">
-                        <h3><i class="fas fa-comment"></i> Feedback</h3>
-                        <p id="feedback-text">Press "Start Test" to begin the reaction speed test!</p>
+                    <!-- Feedback -->
+                    <div class="simple-feedback" id="feedback">
+                        <div class="feedback-title">Feedback</div>
+                        <div class="feedback-text" id="feedback-text">Press "Start Test" to begin!</div>
                     </div>
-                    
-                    <div class="history">
-                        <h3><i class="fas fa-history"></i> Recent Attempts</h3>
+
+                    <!-- History -->
+                    <div class="simple-history">
+                        <div class="history-title">Recent</div>
                         <div class="history-list" id="history-list">
-                            <div class="history-empty">No attempts yet. Start playing!</div>
+                            <div class="history-empty">No attempts yet</div>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 A simple and fun web application to test your reaction speed. Watch the countdown from 5 to 0 and click as soon as it reaches zero!
 
 ## 🎮 Live Demo
-[View Live Demo](https://withoutprotocol.github.io/reaction-speed-test/)
+[View Live Demo](https://methoderror.github.io/reaction-speed-test-2/)
 
 ## ✨ Features
 
@@ -44,23 +44,24 @@ A simple and fun web application to test your reaction speed. Watch the countdow
 ## 📁 Project Structure
 
 ```
-reaction-speed-test/
+reaction-speed-test-2/
 ├── index.html          # Main HTML file
 ├── style.css           # Stylesheet
 ├── script.js           # JavaScript game logic
 ├── README.md           # This file
+├── _config.yml         # GitHub Pages config
 └── .gitignore          # Git ignore file
 ```
 
 ## 🚀 Getting Started
 
 ### Option 1: Use the Live Demo
-Simply visit the [live demo](https://withoutprotocol.github.io/reaction-speed-test/) and start playing!
+Simply visit the [live demo](https://methoderror.github.io/reaction-speed-test-2/) and start playing!
 
 ### Option 2: Run Locally
 1. Clone the repository:
    ```bash
-   git clone https://github.com/withoutprotocol/reaction-speed-test.git
+   git clone https://github.com/MethodError/reaction-speed-test-2.git
    ```
 2. Open `index.html` in your browser
 3. Start testing your reaction speed!
@@ -98,8 +99,8 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-**withoutprotocol**
-- GitHub: [@withoutprotocol](https://github.com/withoutprotocol)
+**MethodError**
+- GitHub: [@MethodError](https://github.com/MethodError)
 
 ## 🙏 Acknowledgments
 

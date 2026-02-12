@@ -60,70 +60,180 @@ header h1 i {
 
 .countdown-display {
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 15px;
-    padding: 40px;
+    border-radius: 20px;
+    padding: 50px 30px;
     text-align: center;
-    margin-bottom: 30px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown-display:hover {
+    border-color: rgba(0, 219, 222, 0.3);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .countdown-display.ready {
     border-color: #4CAF50;
-    background: rgba(76, 175, 80, 0.1);
+    background: rgba(76, 175, 80, 0.15);
 }
 
 .countdown-display.go {
     border-color: #ff4757;
-    background: rgba(255, 71, 87, 0.1);
+    background: rgba(255, 71, 87, 0.15);
     animation: pulse 0.5s infinite alternate;
+    cursor: pointer;
+}
+
+.countdown-display.go:hover {
+    background: rgba(255, 71, 87, 0.25);
 }
 
 @keyframes pulse {
-    from { box-shadow: 0 0 10px rgba(255, 71, 87, 0.5); }
-    to { box-shadow: 0 0 30px rgba(255, 71, 87, 0.8); }
+    from { 
+        box-shadow: 0 0 15px rgba(255, 71, 87, 0.5);
+        transform: scale(1);
+    }
+    to { 
+        box-shadow: 0 0 40px rgba(255, 71, 87, 0.9);
+        transform: scale(1.02);
+    }
 }
 
 .number {
-    font-size: 10rem;
+    font-size: 11rem;
     font-weight: 900;
     display: block;
     color: #fff;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
     transition: all 0.3s ease;
+    margin-bottom: 15px;
+    user-select: none;
+}
+
+.click-hint {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-top: 15px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.countdown-display.go .click-hint {
+    color: #ff4757;
+    opacity: 1;
+    font-weight: 600;
+}
+
+.instructions-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+    .instructions-controls {
+        grid-template-columns: 1fr;
+    }
 }
 
 .instructions {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 30px;
+    border-radius: 15px;
+    padding: 25px;
     border-left: 4px solid #00dbde;
 }
 
-.instructions p {
-    margin-bottom: 10px;
+.instructions h3 {
+    margin-bottom: 15px;
+    color: #00dbde;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.instructions i {
-    color: #00dbde;
-    font-size: 1.2rem;
+.instructions ol {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    padding-left: 5px;
+}
+
+.instructions strong {
+    color: #fff;
+}
+
+.keyboard-hint {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.keyboard-hint kbd {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .controls {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     gap: 20px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+}
+
+.game-stats {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+#game-status {
+    color: #4CAF50;
 }
 
 .btn {
-    padding: 18px 35px;
-    font-size: 1.3rem;
+    padding: 20px 40px;
+    font-size: 1.4rem;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -133,7 +243,7 @@ header h1 i {
     gap: 12px;
     font-weight: 600;
     transition: all 0.3s ease;
-    min-width: 200px;
+    width: 100%;
 }
 
 .start-btn {
@@ -141,26 +251,15 @@ header h1 i {
     color: white;
 }
 
-.start-btn:hover {
+.start-btn:hover:not(:disabled) {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 176, 155, 0.3);
 }
 
-.click-btn {
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    color: white;
-}
-
-.click-btn:disabled {
+.start-btn:disabled {
     background: #555;
     cursor: not-allowed;
-    transform: none !important;
-    box-shadow: none !important;
-}
-
-.click-btn:not(:disabled):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3);
+    opacity: 0.7;
 }
 
 .results {
@@ -171,33 +270,63 @@ header h1 i {
 }
 
 .results h2 {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #00dbde;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.result-item {
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.result-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 219, 222, 0.3);
+}
+
+.result-card.best {
+    border-color: rgba(255, 215, 0, 0.3);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.result-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.result-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    gap: 8px;
 }
 
-.result-item:last-child {
-    border-bottom: none;
-}
-
-.label {
-    font-size: 1.2rem;
+.result-label {
+    font-size: 1rem;
     color: #aaa;
 }
 
-.value {
-    font-size: 2rem;
-    font-weight: 700;
+.result-value {
+    font-size: 2.2rem;
+    font-weight: 800;
     color: #fff;
 }
 
@@ -209,30 +338,54 @@ header h1 i {
     color: #FFD700;
 }
 
+#average-time {
+    color: #00dbde;
+}
+
+.feedback-history {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+@media (max-width: 768px) {
+    .feedback-history {
+        grid-template-columns: 1fr;
+    }
+}
+
 .feedback {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.3rem;
-    min-height: 80px;
+    border-radius: 15px;
+    padding: 25px;
+    border-left: 4px solid #4CAF50;
+}
+
+.feedback h3 {
+    margin-bottom: 15px;
+    color: #4CAF50;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
 }
 
 #feedback-text {
     margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
 }
 
-.how-to-play {
+.history {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     padding: 25px;
-    margin-top: 20px;
+    border-left: 4px solid #fc00ff;
 }
 
-.how-to-play h3 {
+.history h3 {
     margin-bottom: 15px;
     color: #fc00ff;
     display: flex;
@@ -240,14 +393,57 @@ header h1 i {
     gap: 10px;
 }
 
-.how-to-play ol {
-    padding-left: 20px;
+.history-list {
+    min-height: 100px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
 }
 
-.how-to-play li {
+.history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 219, 222, 0.5);
+    border-radius: 3px;
+}
+
+.history-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px 15px;
     margin-bottom: 10px;
-    line-height: 1.6;
-    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 3px solid #00dbde;
+}
+
+.history-item:last-child {
+    margin-bottom: 0;
+}
+
+.history-time {
+    font-weight: 600;
+    color: #fff;
+}
+
+.history-ms {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.history-empty {
+    text-align: center;
+    color: #888;
+    padding: 30px 0;
+    font-style: italic;
 }
 
 footer {
